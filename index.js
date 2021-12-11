@@ -1,5 +1,5 @@
 const ref = require('ssb-ref');
-const visit = require('unist-util-visit');
+const { visit } = require('unist-util-visit');
 const toUrl = require('ssb-serve-blobs/id-to-url');
 
 const BLOB_REF_LENGTH = `&${Buffer.alloc(32).toString('base64')}.sha256`.length

@@ -1,1 +1,6 @@
-{}
+{
+  "dependencies": {
+    "ssb-ref": "^2.16.0",
+    "unist-util-visit": "^4.1.0"
+  }
+}
