@@ -8,6 +8,7 @@
     "test": "test"
   },
   "scripts": {
+    "postversion": "git push && git push --tags && npm publish",
     "test": "tape test/index.js | tap-spec"
   },
   "dependencies": {
