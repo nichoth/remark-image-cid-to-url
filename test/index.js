@@ -28,7 +28,6 @@ Take a look at this scenery:
 
     // can pass in a function to create a URL given an ID
     const actualOutput = cidToURL(blobId => {
-        console.log('***id***', blobId)
         return 'http://foo.bar/blob/' + encodeURIComponent(blobId)
     })(actualInput);
 
