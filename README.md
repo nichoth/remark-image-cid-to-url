@@ -2,6 +2,12 @@
 
 Transform a given image ID to a URL by a given function.
 
+## install
+
+```
+$ npm i -S remark-image-cid-to-url
+```
+
 ## example
 
 ```js
@@ -10,7 +16,7 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const test = require('tape');
 import remarkParse from 'remark-parse'
-import cidToURL from '../index.js'
+import cidToURL from 'remark-image-cid-to-url'
 const remark = require('remark');
 
 
