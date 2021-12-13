@@ -20,7 +20,6 @@
     "remark-parse": "^10.0.1",
     "tap-spec": "^5.0.0",
     "tape": "^5.3.2",
-    "unified": "^10.1.1",
     "unist-util-inspect": "^7.0.0"
   },
   "repository": {

@@ -2,7 +2,6 @@
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const test = require('tape');
-// import { unified } from 'unified'
 import remarkParse from 'remark-parse'
 import cidToURL from '../index.js'
 const remark = require('remark');
