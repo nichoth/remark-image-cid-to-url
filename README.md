@@ -19,17 +19,16 @@ import remarkParse from 'remark-parse'
 import cidToURL from 'remark-image-cid-to-url'
 const remark = require('remark');
 
-
-test('it transforms a CID by a function', t => {
-    t.plan(1);
-
-    const markdown = `
+const markdown = `
 # Title
 
 Take a look at this scenery:
 
 ![scenery](&Pe5kTo/V/w4MToasp1IuyMrMcCkQwDOdyzbyD5fy4ac=.sha256)
 `;
+
+test('it transforms a CID by a function', t => {
+    t.plan(1);
 
     const output = remark()
         .use(cidToURL(blobId => {
