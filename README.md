@@ -27,7 +27,7 @@ Take a look at this scenery:
 ![scenery](&Pe5kTo/V/w4MToasp1IuyMrMcCkQwDOdyzbyD5fy4ac=.sha256)
 `;
 
-test('it transforms a CID by a function', t => {
+test('it transforms a CID with a function', t => {
     t.plan(1);
 
     const output = remark()
