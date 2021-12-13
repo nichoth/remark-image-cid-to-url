@@ -1,16 +1,13 @@
 // These lines make "require" available
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
-
 const test = require('tape');
-import { unified } from 'unified'
+// import { unified } from 'unified'
 import remarkParse from 'remark-parse'
 import cidToURL from '../index.js'
+const remark = require('remark');
 
-test('it lifts a nested list to the root level', t => {
-    t.plan(2);
-
-    const markdown = `
+const markdown = `
 # Title
 
 Take a look at this scenery:
@@ -18,20 +15,20 @@ Take a look at this scenery:
 ![scenery](&Pe5kTo/V/w4MToasp1IuyMrMcCkQwDOdyzbyD5fy4ac=.sha256)
 `;
 
-    const actualInput = unified()
-        .use(remarkParse, {commonmark: true})
-        .parse(markdown);
 
-    t.equal(actualInput.children[2].children[0].url,
-        '&Pe5kTo/V/w4MToasp1IuyMrMcCkQwDOdyzbyD5fy4ac=.sha256',
-        'should have the expected input URL')
+test('it transforms a CID by a function', t => {
+    t.plan(1);
 
-    // can pass in a function to create a URL given an ID
-    const actualOutput = cidToURL(blobId => {
-        return 'http://foo.bar/blob/' + encodeURIComponent(blobId)
-    })(actualInput);
+    // this returns markdown content
+    const output = remark()
+        .use(cidToURL(blobId => {
+            return 'http://foo.bar/blob/' + encodeURIComponent(blobId)
+        }))
+        .use(remarkParse, { commonmark: true })
+        .processSync(markdown).contents;
 
-    t.equal(actualOutput.children[2].children[0].url,
-        'http://foo.bar/blob/%26Pe5kTo%2FV%2Fw4MToasp1IuyMrMcCkQwDOdyzbyD5fy4ac%3D.sha256',
-        'shouold have the right output URL')
+    console.log('**output**', JSON.stringify(output, null, 2))
+
+    t.ok(output.includes('foo.bar/blob/'),
+        'should include the transformed URL')
 });

@@ -16,6 +16,7 @@
     "unist-util-visit": ">=1.0.0 <=3.0"
   },
   "devDependencies": {
+    "remark": "~9.0.0",
     "remark-parse": "^10.0.1",
     "tap-spec": "^5.0.0",
     "tape": "^5.3.2",
