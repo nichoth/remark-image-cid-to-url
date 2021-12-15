@@ -1,4 +1,3 @@
-import { createRequire } from "module";
 const ref = require('ssb-ref');
 import { visit } from 'unist-util-visit'
 
