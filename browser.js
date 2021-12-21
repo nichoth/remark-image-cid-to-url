@@ -22,4 +22,3 @@ function cidToUrl (toUrl) {
 }
 
 export default cidToUrl
-
