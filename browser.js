@@ -16,7 +16,6 @@ function cidToUrl (toUrl) {
                     image.url = toUrl(image.url);
 
                     if (image.url === null) {
-                        console.log('is null')
                         return null
                     }
                 }
