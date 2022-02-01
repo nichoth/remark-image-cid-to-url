@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "ssb-ref": "^2.16.0",
+    "unist-util-filter": "^4.0.0",
     "unist-util-visit": ">=1.0.0 <=3.0"
   },
   "devDependencies": {

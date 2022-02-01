@@ -1,5 +1,6 @@
 const ref = require('ssb-ref');
 import { visit } from 'unist-util-visit'
+import { filter } from 'unist-util-filter'
 
 const BLOB_REF_LENGTH = `&${Buffer.alloc(32).toString('base64')}.sha256`.length
 
@@ -13,10 +14,22 @@ function cidToUrl (toUrl) {
                     ref.isBlob(image.url.substr(0, BLOB_REF_LENGTH))
                 ) {
                     image.url = toUrl(image.url);
+
+                    if (image.url === null) {
+                        console.log('is null')
+                        return null
+                    }
                 }
+
                 return image;
             });
-            return ast;
+
+            var newAst = filter(ast, node => {
+                if (node.type === 'image' && node.url === null) return false
+                return true
+            })
+
+            return newAst
         };
     }
 }

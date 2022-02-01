@@ -31,3 +31,19 @@ test('it transforms a CID by a function', t => {
     t.ok(output.includes('foo.bar/blob/'),
         'should include the transformed URL')
 });
+
+test('handles null URLs', t => {
+    t.plan(1)
+
+    // this returns markdown content
+    const output = remark()
+        .use(cidToURL(() => {
+            return null
+        }))
+        .use(remarkParse, { commonmark: true })
+        .processSync(markdown).contents;
+
+    console.log('**output**', JSON.stringify(output, null, 2))
+
+    t.notOk(output.includes('[scenery]'), 'should not create an image tag')
+})
