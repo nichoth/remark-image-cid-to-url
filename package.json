@@ -1,6 +1,6 @@
 {
   "name": "remark-image-cid-to-url",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Transform md CID to URL",
   "main": "index.js",
   "type": "module",
