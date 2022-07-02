@@ -1,10 +1,8 @@
-import { createRequire } from "module";
-const require = createRequire(import.meta.url);
-const ref = require('ssb-ref');
 import { visit } from 'unist-util-visit'
 import { filter } from 'unist-util-filter'
+import isBlob from './is-blob.js'
 
-const BLOB_REF_LENGTH = `&${Buffer.alloc(32).toString('base64')}.sha256`.length
+// const BLOB_REF_LENGTH = `&${Buffer.alloc(32).toString('base64')}.sha256`.length
 
 function cidToUrl (toUrl) {
     return function () {
@@ -13,7 +11,8 @@ function cidToUrl (toUrl) {
                 if (
                     image.url &&
                     typeof image.url === 'string' &&
-                    ref.isBlob(image.url.substr(0, BLOB_REF_LENGTH))
+                    isBlob(image.url)
+                    // ref.isBlob(image.url.substr(0, BLOB_REF_LENGTH))
                 ) {
                     image.url = toUrl(image.url);
 
